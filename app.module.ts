@@ -24,6 +24,7 @@ import { ProductcardComponent } from './productcard/productcard.component';
 import { ProductGridComponent } from './productgrid/productgrid.component';
 import { CartMenuComponent } from './cartmenu/cartmenu.component';
 import { ProductViewComponent } from './productview/productview.component';
+import { CartViewComponent } from './cartview/cartview.component';
 
 import { CategoryTitlePipe } from './category.pipe';
 
@@ -43,7 +44,8 @@ import { CategoryTitlePipe } from './category.pipe';
     ProductGridComponent,
     CartMenuComponent,
     ProductViewComponent,
-    CategoryTitlePipe
+    CategoryTitlePipe,
+    CartViewComponent
   ],
   imports: [
     BrowserModule,

@@ -85,6 +85,13 @@ export class CartService {
             this.cart.amount -= product.price;
             return item;
         } 
-
     }
+    //clear all products and remove amount and count
+    clearCart() {
+        this.cart.items = [];
+        this.cart.amount = 0;
+        this.cart.count = 0;
+    }
+
+
 }

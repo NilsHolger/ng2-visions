@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 import { Product } from '../Product';
 
@@ -8,11 +9,20 @@ import { Product } from '../Product';
   templateUrl: './productsearch.component.html',
   styleUrls: ['./productsearch.component.css']
 })
-export class ProductSearchComponent {
+export class ProductSearchComponent implements OnInit {
 
   disabled: boolean = true;
+  searchControl: FormControl;
 
   constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.searchControl = new FormControl();
+
+    this.searchControl.valueChanges.subscribe((value: string) => {
+      this.searchChanged(value);
+    });
+  }
 
   searchProduct(value: string){
       this.router.navigate(['/products'], { queryParams: { search: value} });
