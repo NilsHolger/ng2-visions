@@ -23,6 +23,9 @@ import { CategorylistComponent } from './categorylist/categorylist.component';
 import { ProductcardComponent } from './productcard/productcard.component';
 import { ProductGridComponent } from './productgrid/productgrid.component';
 import { CartMenuComponent } from './cartmenu/cartmenu.component';
+import { ProductViewComponent } from './productview/productview.component';
+
+import { CategoryTitlePipe } from './category.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { CartMenuComponent } from './cartmenu/cartmenu.component';
     CategorylistComponent,
     ProductcardComponent,
     ProductGridComponent,
-    CartMenuComponent
+    CartMenuComponent,
+    ProductViewComponent,
+    CategoryTitlePipe
   ],
   imports: [
     BrowserModule,

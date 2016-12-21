@@ -38,9 +38,10 @@ export class CartService {
         this.cart.count++;
         //increase amount in the cart
         this.cart.amount += product.price;
+        return item;
     }
 
-    private findItem(id: string): CartItem {
+    findItem(id: string): CartItem {
         for (let i = 0; i < this.cart.items.length; i++ ){
                 if (this.cart.items[i].product.id === id){
                     return this.cart.items[i];
@@ -82,6 +83,7 @@ export class CartService {
             this.cart.count--;
             //decrease amount in cart
             this.cart.amount -= product.price;
+            return item;
         } 
 
     }
