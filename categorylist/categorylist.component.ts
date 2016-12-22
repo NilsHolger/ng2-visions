@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Category } from '../category';
@@ -11,10 +11,13 @@ import { CategoryService } from '../category.service';
 })
 export class CategorylistComponent{
 
-  categories: Category[];
+  categories: Category[] = [];
 
   constructor(private router: Router, private categoryService: CategoryService) {
-        this.categories = categoryService.getCategories();
+   }
+
+   ngOnInit(): void {
+     this.categoryService.getCategories().then((categories: Category[]) => this.categories = categories);
    }
 
   filterProducts(category: Category){

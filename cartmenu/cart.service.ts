@@ -9,9 +9,9 @@ export class CartService {
     products: Product[] = [];
     cart: Cart = new Cart();
 
-    constructor(private productService: ProductService){
-        this.products = this.productService.getProducts();
-    }
+    // constructor(private productService: ProductService){
+    //     this.products = this.productService.getProducts();
+    // }
 
     addProduct(product: Product){
         //find cartitem in items

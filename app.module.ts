@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule  } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data-service';
 
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
@@ -55,7 +57,8 @@ import { CategoryTitlePipe } from './category.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [{provide: LocationStrategy, useClass: PathLocationStrategy },
   CategoryService, ProductService, CartService],

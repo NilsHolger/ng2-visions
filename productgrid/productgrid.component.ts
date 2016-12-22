@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product';
 
@@ -10,21 +10,27 @@ import { CartService } from '../cartmenu/cart.service';
   templateUrl: './productgrid.component.html',
   styleUrls: ['./productgrid.component.css']
 })
-export class ProductGridComponent {
+export class ProductGridComponent implements OnInit {
       products: any = [];
 
-      constructor(private activatedRouter: ActivatedRoute, 
-      private productService: ProductService, private cartService: CartService) {
-        this.activatedRouter.queryParams.subscribe(params => {
-              let category: string = params['category'];
-              let search: string = params['search'];
-              //return filtered data from getproducts function
-              let products: Product[] = this.productService.getProducts(category, search);
-              //transform products to appropriate data to display
-              this.products = this.transform(products);
-              //this.products = getProducts(category, serach);
-        });
+      constructor(private activatedRoute: ActivatedRoute, 
+      private productService: ProductService, private cartService: CartService) {}
+
+      ngOnInit(): void {
+            this.activatedRoute.queryParams
+              .subscribe(params => {
+                  let category: string = params['category'];
+                  let search: string = params['search'];
+                  //clear view before request
+                  this.products = [];
+                  //return filtered data from getproducts function
+                  this.productService.getProducts(category, search).then((products: Product[]) => {
+                    //transform products to appropriate data to display
+                    this.products = this.transform(products);
+                  });
+              });
       }
+
       transform(source: Product[]){
         let index = 0;
         let length = source.length;
